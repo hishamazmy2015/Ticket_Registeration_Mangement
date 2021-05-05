@@ -34,5 +34,4 @@ public class Role {
         return this.name;
     }
 
-    // getters and setters are not shown for brevity
 }
