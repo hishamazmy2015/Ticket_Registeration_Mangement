@@ -1,6 +1,6 @@
 package com.programming.techie.springredditclone.service;
 
-import com.programming.techie.springredditclone.exceptions.SpringRedditException;
+import com.programming.techie.springredditclone.exceptions.CustomException;
 import com.programming.techie.springredditclone.model.RefreshToken;
 import com.programming.techie.springredditclone.repository.RefreshTokenRepository;
 import lombok.AllArgsConstructor;
@@ -27,7 +27,7 @@ public class RefreshTokenService {
 
     void validateRefreshToken(String token) {
         refreshTokenRepository.findByToken(token)
-                .orElseThrow(() -> new SpringRedditException("Invalid refresh Token"));
+                .orElseThrow(() -> new CustomException("Invalid refresh Token"));
     }
 
     public void deleteRefreshToken(String token) {

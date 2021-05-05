@@ -4,13 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -18,6 +18,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+
 public class User {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -31,4 +32,12 @@ public class User {
     private String email;
     private Instant created;
     private boolean enabled;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 }

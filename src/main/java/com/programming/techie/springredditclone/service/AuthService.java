@@ -4,7 +4,7 @@ import com.programming.techie.springredditclone.dto.AuthenticationResponse;
 import com.programming.techie.springredditclone.dto.LoginRequest;
 import com.programming.techie.springredditclone.dto.RefreshTokenRequest;
 import com.programming.techie.springredditclone.dto.RegisterRequest;
-import com.programming.techie.springredditclone.exceptions.SpringRedditException;
+import com.programming.techie.springredditclone.exceptions.CustomException;
 import com.programming.techie.springredditclone.model.User;
 import com.programming.techie.springredditclone.model.VerificationToken;
 import com.programming.techie.springredditclone.repository.UserRepository;
@@ -61,7 +61,7 @@ public class AuthService {
 
     private void fetchUserAndEnable(VerificationToken verificationToken) {
         String username = verificationToken.getUser().getUsername();
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new SpringRedditException("User not found with name - " + username));
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new CustomException("User not found with name - " + username));
         user.setEnabled(true);
         userRepository.save(user);
     }
@@ -78,7 +78,7 @@ public class AuthService {
 
     public void verifyAccount(String token) {
         Optional<VerificationToken> verificationToken = verificationTokenRepository.findByToken(token);
-        fetchUserAndEnable(verificationToken.orElseThrow(() -> new SpringRedditException("Invalid Token")));
+        fetchUserAndEnable(verificationToken.orElseThrow(() -> new CustomException("Invalid Token")));
     }
 
     public AuthenticationResponse login(LoginRequest loginRequest) {
