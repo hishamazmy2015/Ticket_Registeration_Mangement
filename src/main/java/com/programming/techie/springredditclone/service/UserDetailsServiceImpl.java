@@ -39,3 +39,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return singletonList(new SimpleGrantedAuthority(role));
     }
 }
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+* */
+//    List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
+//
+///* this is just a sample , you must implement bringing data from repository then prefix every string with ROLE_ */
+//    authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+//            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+//
+//            return authorities;
+

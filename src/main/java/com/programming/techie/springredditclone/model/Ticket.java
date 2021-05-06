@@ -22,4 +22,8 @@ public class Ticket {
     private String userId;
     private String message;
 
+    public Ticket(String userId, String message) {
+        this.userId = userId;
+        this.message = message;
+    }
 }
