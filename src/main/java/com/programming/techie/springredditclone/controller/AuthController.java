@@ -45,11 +45,11 @@ public class AuthController {
         return authService.refreshToken(refreshTokenRequest);
     }
 
-    @PostMapping("/logout")
-    public ResponseEntity<String> logout(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
-        refreshTokenService.deleteRefreshToken(refreshTokenRequest.getRefreshToken());
-        return ResponseEntity.status(OK).body("Refresh Token Deleted Successfully!!");
-    }
+//    @PostMapping("/logout")
+//    public ResponseEntity<String> logout(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
+//        refreshTokenService.deleteRefreshToken(refreshTokenRequest.getRefreshToken());
+//        return ResponseEntity.status(OK).body("Refresh Token Deleted Successfully!!");
+//    }
 
     /*
      *
