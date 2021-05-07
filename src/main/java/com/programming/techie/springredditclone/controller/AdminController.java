@@ -38,14 +38,14 @@ public class AdminController {
     private JwtProvider jwtProvider;
 
     @GetMapping("/api/users/list")
-    public ResponseEntity<List<User>> getAllUsers(@RequestHeader(name = "token") String token) {
-        try {
-            getAuthorization(token);
+    public ResponseEntity<List<User>> getAllUsers(/*@RequestHeader(name = "token") String token*/) {
+//        try {
+//            getAuthorization(token);
             return status(HttpStatus.OK).body(userService.getAllUsers());
-        } catch (Exception e) {
-
-            return status(HttpStatus.FORBIDDEN).body(null);
-        }
+//        } catch (Exception e) {
+//
+//            return status(HttpStatus.FORBIDDEN).body(null);
+//        }
     }
 
     @GetMapping("/api/tickets/list")
